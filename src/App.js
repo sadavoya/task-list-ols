@@ -6,10 +6,15 @@ import uuid from "uuid";
 
 function App() {
   return (
-    <div>
-      <h1>hello from app</h1>
-      <TodoInput />
-      <TodoList />
+    <div className="container">
+      <div className="row">
+        <div className="col-10 mx-auto col-md-8 mt-4">
+          <h3 className="text-capitalize text-center">todo input</h3>
+          <TodoInput />
+          <h3 className="text-capitalize text-center">todo list</h3>
+          <TodoList />
+        </div>
+      </div>
     </div>
   );
 }
