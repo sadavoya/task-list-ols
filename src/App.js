@@ -41,7 +41,7 @@ export default class App extends Component {
               handleChange={this.handleChange}
               handleAddItem={this.handleAddItem}
             />
-            <TodoList />
+            <TodoList items={this.state.items} />
           </div>
         </div>
       </div>
