@@ -3,17 +3,32 @@ import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import uuid from "uuid";
+import { v4 as uuid } from "uuid";
 
 export default class App extends Component {
   state = {
     items: [],
-    id: 0,
+    id: uuid(),
     item: "",
     editItem: false,
   };
   handleChange = (e) => {
     this.setState({ item: e.target.value });
+  };
+  handleAddItem = (e) => {
+    e.preventDefault();
+    let { items, item } = this.state;
+    const newItem = {
+      id: this.state.id,
+      title: this.state.item,
+    };
+    const updatedItems = [...items, newItem];
+    this.setState({
+      items: updatedItems,
+      item: "",
+      id: uuid(),
+      editItem: false,
+    });
   };
   render() {
     return (
@@ -24,6 +39,7 @@ export default class App extends Component {
             <TodoInput
               item={this.state.item}
               handleChange={this.handleChange}
+              handleAddItem={this.handleAddItem}
             />
             <TodoList />
           </div>
