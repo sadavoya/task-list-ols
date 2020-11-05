@@ -37,6 +37,17 @@ export default class App extends Component {
     const filteredItems = this.state.items.filter((item) => item.id !== id);
     this.setState({ items: filteredItems });
   };
+  handleEdit = (id) => {
+    const itemToEdit = this.state.items.find((item) => item.id === id);
+    if (itemToEdit) {
+      this.handleDelete(id);
+      this.setState({
+        item: itemToEdit.title,
+        id: id,
+        editItem: true,
+      });
+    }
+  };
   render() {
     return (
       <div className="container">
@@ -45,6 +56,7 @@ export default class App extends Component {
             <h3 className="text-capitalize text-center">todo input</h3>
             <TodoInput
               item={this.state.item}
+              editItem={this.state.editItem}
               handleChange={this.handleChange}
               handleAddItem={this.handleAddItem}
             />
@@ -52,6 +64,7 @@ export default class App extends Component {
               items={this.state.items}
               clearList={this.clearList}
               handleDelete={this.handleDelete}
+              handleEdit={this.handleEdit}
             />
           </div>
         </div>
