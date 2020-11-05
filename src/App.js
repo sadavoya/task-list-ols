@@ -17,7 +17,7 @@ export default class App extends Component {
   };
   handleAddItem = (e) => {
     e.preventDefault();
-    let { items, item } = this.state;
+    let { items } = this.state;
     const newItem = {
       id: this.state.id,
       title: this.state.item,
